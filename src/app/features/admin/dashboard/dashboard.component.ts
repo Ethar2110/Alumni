@@ -10,6 +10,7 @@ import { AuthService } from '../../../core/services/auth.service';
     <div class="dashboard-container">
       <h1>Admin Dashboard</h1>
       <p>test</p>
+      <p>test 2</p>
       <p class="welcome">Welcome, {{ authService.user()?.name }}!</p>
       <p>d</p>
       <div class="stats-grid">
