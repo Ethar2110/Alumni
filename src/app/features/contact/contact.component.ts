@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
           <h1>Get in Touch</h1>
           <p>We'd love to hear from you. Reach out for inquiries, support, or feedback.</p>
           
+          
           <div class="details">
             <p><strong>📍 Address:</strong> 123 University Ave, Tech City</p>
             <p><strong>📧 Email:</strong> contact&#64;alumni-hall.com</p>
