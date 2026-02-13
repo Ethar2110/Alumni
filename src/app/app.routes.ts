@@ -3,6 +3,12 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { authGuard } from './core/guards/auth.guard';
 import { guestGuard } from './core/guards/guest.guard';
 
+
+
+
+
+
+
 export const routes: Routes = [
   {
     path: '',

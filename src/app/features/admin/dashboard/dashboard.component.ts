@@ -9,12 +9,13 @@ import { AuthService } from '../../../core/services/auth.service';
   template: `
     <div class="dashboard-container">
       <h1>Admin Dashboard</h1>
+      <p>test</p>
       <p class="welcome">Welcome, {{ authService.user()?.name }}!</p>
-      
+      <p>d</p>
       <div class="stats-grid">
         <div class="stat-card">
           <h3>Total Alumni</h3>
-          <p class="number">2,543</p>
+          <p class="number">2,999</p>
         </div>
         <div class="stat-card">
           <h3>New Registrations</h3>
