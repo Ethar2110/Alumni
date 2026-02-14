@@ -1,0 +1,99 @@
+.manage-container {
+  padding: 3rem 0;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+
+    h1 {
+      margin: 0;
+      color: var(--primary-color);
+      font-size: 2.2rem;
+    }
+  }
+
+  .table-container {
+    padding: 1rem;
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+
+      th {
+        padding: 1.2rem 1rem;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+        font-weight: 600;
+        color: var(--text-color);
+        opacity: 0.8;
+      }
+
+      td {
+        padding: 1.2rem 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        vertical-align: middle;
+      }
+
+      .alumni-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        span {
+          font-weight: 500;
+        }
+      }
+
+      .badge {
+        padding: 0.25rem 0.75rem;
+        background-color: rgba(0, 196, 173, 0.1);
+        color: var(--primary-color);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .actions {
+        display: flex;
+        gap: 0.5rem;
+
+        .btn-danger {
+          background-color: #ff4d4d;
+          color: white;
+          &:hover {
+            background-color: #e60000;
+          }
+        }
+      }
+    }
+
+    .empty-state {
+      padding: 3rem;
+      text-align: center;
+      opacity: 0.6;
+    }
+  }
+
+  .footer-actions {
+    margin-top: 2rem;
+  }
+}
+
+[data-theme="dark"] {
+  .table-container {
+    table {
+      th { border-bottom-color: rgba(255, 255, 255, 0.1); }
+      td { border-bottom-color: rgba(255, 255, 255, 0.05); }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/user.interface';
 import { of, Observable } from 'rxjs';
@@ -11,6 +11,9 @@ export class AuthService {
   private usersListKey = 'alumni_users_list';
   // Signal to track user state reactively
   user = signal<User | null>(this.getUserFromStorage());
+  
+  // Computed signal for admin check
+  isAdmin = computed(() => this.user()?.role === 'admin');
 
   constructor(private router: Router) {
     // Initialize users list if not exists
@@ -45,8 +48,8 @@ export class AuthService {
       return of(true);
     }
     
-    // For convenience, still allow admin login with 'admin' in email and 'password' as pass
-    if (email.includes('admin') && password === 'password') {
+    // For convenience, still allow admin login with specific email and password
+    if (email === 'admin@system.com' && password === 'password') {
         const adminUser: User = {
             id: Date.now(),
             name: email.split('@')[0],
@@ -74,18 +77,19 @@ export class AuthService {
           id: Date.now(),
           name,
           email,
-          password, // In a real app, never store plain text!
-          role: email.includes('admin') ? 'admin' : 'user'
+          password,
+          role: 'user' // Default to user
       };
 
       users.push(newUser);
       localStorage.setItem(this.usersListKey, JSON.stringify(users));
 
       // Auto-login
-      const { password: _, ...userWithoutPassword } = newUser;
       const user: User = {
-          ...userWithoutPassword,
-          role: userWithoutPassword.role as 'admin' | 'user',
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+          role: 'user',
           token: 'mock-jwt-token'
       };
       localStorage.setItem(this.userKey, JSON.stringify(user));
@@ -104,7 +108,5 @@ export class AuthService {
     return !!this.user();
   }
 
-  isAdmin(): boolean {
-      return this.user()?.role === 'admin';
-  }
+
 }

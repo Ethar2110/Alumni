@@ -16,8 +16,8 @@
         </div>
         
         <div class="socials">
-          <button class="btn btn-sm">Connect on LinkedIn</button>
-          <button class="btn btn-sm btn-outline">Send Email</button>
+          <a *ngIf="alumni.linkedin" [href]="alumni.linkedin" target="_blank" class="btn btn-sm">Connect on LinkedIn</a>
+          <a *ngIf="alumni.email" [href]="'https://mail.google.com/mail/?view=cm&fs=1&to=' + alumni.email" target="_blank" class="btn btn-sm btn-outline">Send Email</a>
         </div>
       </div>
     </div>

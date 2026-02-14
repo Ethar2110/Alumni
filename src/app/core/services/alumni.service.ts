@@ -16,7 +16,8 @@ export class AlumniService {
       company: 'Google',
       profileImage: 'https://ui-avatars.com/api/?name=John+Doe&background=0D8ABC&color=fff',
       bio: 'John represents the excellence of our CS department with his rapid growth in the tech industry.',
-      careerCategory: 'Engineering'
+      careerCategory: 'Engineering',
+      email: 'john.doe@example.com'
     },
     {
       id: 2,
@@ -27,7 +28,8 @@ export class AlumniService {
       company: 'Apple',
       profileImage: 'https://ui-avatars.com/api/?name=Jane+Smith&background=E91E63&color=fff',
       bio: 'Jane has won multiple awards for her innovative design approaches.',
-      careerCategory: 'Design'
+      careerCategory: 'Design',
+      email: 'jane.smith@example.com'
     },
     {
       id: 3,
@@ -38,7 +40,8 @@ export class AlumniService {
       company: 'Microsoft',
       profileImage: 'https://ui-avatars.com/api/?name=Michael+Brown&background=9C27B0&color=fff',
       bio: 'Michael leads a team of 50 people delivering cloud solutions.',
-      careerCategory: 'Business'
+      careerCategory: 'Business',
+      email: 'michael.brown@example.com'
     },
     {
       id: 4,
@@ -49,7 +52,8 @@ export class AlumniService {
       company: 'Mayo Clinic',
       profileImage: 'https://ui-avatars.com/api/?name=Emily+Davis&background=009688&color=fff',
       bio: 'Emily is dedicated to patient care and has been recognized for her service.',
-      careerCategory: 'Healthcare'
+      careerCategory: 'Healthcare',
+      email: 'emily.davis@example.com'
     },
     {
         id: 5,
@@ -60,7 +64,8 @@ export class AlumniService {
         company: 'Tesla',
         profileImage: 'https://ui-avatars.com/api/?name=David+Wilson&background=FF5722&color=fff',
         bio: 'David works on the next generation of electric vehicles.',
-        careerCategory: 'Engineering'
+        careerCategory: 'Engineering',
+        email: 'david.wilson@example.com'
     },
     {
         id: 6,
@@ -71,7 +76,8 @@ export class AlumniService {
         company: 'Pfizer',
         profileImage: 'https://ui-avatars.com/api/?name=Sarah+Johnson&background=673AB7&color=fff',
         bio: 'Sarah is contributing to ground-breaking research in immunology.',
-        careerCategory: 'Science'
+        careerCategory: 'Science',
+        email: 'sarah.johnson@example.com'
     },
     {
         id: 7,
@@ -82,7 +88,8 @@ export class AlumniService {
         company: 'City High School',
         profileImage: 'https://ui-avatars.com/api/?name=Robert+Miller&background=FFC107&color=fff',
         bio: 'Robert is inspiring the next generation of students.',
-        careerCategory: 'Education'
+        careerCategory: 'Education',
+        email: 'robert.miller@example.com'
     },
     {
         id: 8,
@@ -93,7 +100,8 @@ export class AlumniService {
         company: 'Amazon',
         profileImage: 'https://ui-avatars.com/api/?name=Jessica+Taylor&background=3F51B5&color=fff',
         bio: 'Jessica analyzes big data to drive business decisions.',
-        careerCategory: 'Technology'
+        careerCategory: 'Technology',
+        email: 'jessica.taylor@example.com'
     },
     {
         id: 9,
@@ -104,7 +112,8 @@ export class AlumniService {
         company: 'The New York Times',
         profileImage: 'https://ui-avatars.com/api/?name=William+Anderson&background=795548&color=fff',
         bio: 'William covers international politics and human rights.',
-        careerCategory: 'Media'
+        careerCategory: 'Media',
+        email: 'william.anderson@example.com'
     },
     {
         id: 10,
@@ -115,7 +124,8 @@ export class AlumniService {
         company: 'Creative Agency',
         profileImage: 'https://ui-avatars.com/api/?name=Olivia+Thomas&background=E91E63&color=fff',
         bio: 'Olivia oversees creative direction for major brand campaigns.',
-        careerCategory: 'Arts'
+        careerCategory: 'Arts',
+        email: 'olivia.thomas@example.com'
     }
   ]);
 
@@ -145,5 +155,24 @@ export class AlumniService {
     };
     this.alumniSignal.update(list => [...list, newAlumni]);
     return of(newAlumni);
+  }
+
+  updateAlumni(id: number, data: Partial<Alumni>): Observable<Alumni | undefined> {
+    let updatedAlumni: Alumni | undefined;
+    this.alumniSignal.update(list => {
+      return list.map(a => {
+        if (a.id === id) {
+          updatedAlumni = { ...a, ...data };
+          return updatedAlumni;
+        }
+        return a;
+      });
+    });
+    return of(updatedAlumni);
+  }
+
+  deleteAlumni(id: number): Observable<boolean> {
+    this.alumniSignal.update(list => list.filter(a => a.id !== id));
+    return of(true);
   }
 }

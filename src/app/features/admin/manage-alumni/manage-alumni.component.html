@@ -1,0 +1,49 @@
+<div class="manage-container animate-fade-in">
+  <div class="container">
+    <div class="header">
+      <h1>Manage Alumni</h1>
+      <button class="btn btn-sm" routerLink="/admin/add-alumni">Add New Alumnus</button>
+    </div>
+
+    <div class="table-container card">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Grad Year</th>
+            <th>Current Role & Company</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alumni of alumniList()">
+            <td>
+              <div class="alumni-info">
+                <img [src]="alumni.profileImage" [alt]="alumni.name" class="avatar">
+                <span>{{alumni.name}}</span>
+              </div>
+            </td>
+            <td>{{alumni.graduationYear}}</td>
+            <td>{{alumni.currentPosition}}  {{alumni.company}}</td>
+            <td><span class="badge">{{alumni.careerCategory}}</span></td>
+            <td>
+              <div class="actions">
+                <button class="btn btn-sm btn-outline" [routerLink]="['/admin/edit-alumni', alumni.id]">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="onDelete(alumni.id)">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div *ngIf="alumniList().length === 0" class="empty-state">
+        <p>No alumni records found.</p>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <button class="btn btn-outline" routerLink="/admin">Back to Dashboard</button>
+    </div>
+  </div>
+</div>

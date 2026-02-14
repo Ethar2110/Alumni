@@ -8,8 +8,8 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   if (authService.isLoggedIn()) {
     // Check if route requires admin
-    if (route.data?.['role'] && route.data['role'] !== authService.user()?.role) {
-         router.navigate(['/']); // Redirect to home if not authorized
+    if (route.data?.['role'] === 'admin' && !authService.isAdmin()) {
+         router.navigate(['/']);
          return false;
     }
     return true;

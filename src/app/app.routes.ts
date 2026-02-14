@@ -54,6 +54,14 @@ export const routes: Routes = [
           {
             path: 'add-alumni',
             loadComponent: () => import('./features/admin/add-alumni/add-alumni.component').then(m => m.AddAlumniComponent)
+          },
+          {
+            path: 'manage-alumni',
+            loadComponent: () => import('./features/admin/manage-alumni/manage-alumni.component').then(m => m.ManageAlumniComponent)
+          },
+          {
+            path: 'edit-alumni/:id',
+            loadComponent: () => import('./features/admin/edit-alumni/edit-alumni.component').then(m => m.EditAlumniComponent)
           }
         ]
       }
