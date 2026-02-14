@@ -4,7 +4,54 @@
   margin: 0 auto;
   
   h1 { color: var(--primary-color); margin-bottom: 0.5rem; }
-  .welcome { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.8; }
+  .welcome {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+
+  .quick-actions {
+    margin-bottom: 3rem;
+
+    h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .action-card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+
+      i {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+      }
+
+      span {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        background-color: rgba(0, 196, 173, 0.05);
+      }
+    }
+  }
   
   .stats-grid {
     display: grid;

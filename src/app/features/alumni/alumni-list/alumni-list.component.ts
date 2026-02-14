@@ -26,7 +26,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class AlumniListComponent {
   alumniService = inject(AlumniService);
-  alumniList = toSignal(this.alumniService.getAlumni(), { initialValue: [] });
+  alumniList = this.alumniService.alumni;
   categories = toSignal(this.alumniService.getCareerCategories(), { initialValue: [] });
   
   searchText = '';

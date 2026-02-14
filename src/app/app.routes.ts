@@ -46,7 +46,16 @@ export const routes: Routes = [
         path: 'admin',
         canActivate: [authGuard],
         data: { role: 'admin' },
-        loadComponent: () => import('./features/admin/dashboard/dashboard.component').then(m => m.DashboardComponent)
+        children: [
+          {
+            path: '',
+            loadComponent: () => import('./features/admin/dashboard/dashboard.component').then(m => m.DashboardComponent)
+          },
+          {
+            path: 'add-alumni',
+            loadComponent: () => import('./features/admin/add-alumni/add-alumni.component').then(m => m.AddAlumniComponent)
+          }
+        ]
       }
     ]
   },

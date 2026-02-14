@@ -14,7 +14,7 @@
       
       @if (authService.user()) {
          @if (authService.isAdmin()) {
-           <li><a routerLink="/admin" routerLinkActive="active">Dashboard</a></li>
+           <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
          }
          <li><button (click)="logout()" class="btn btn-outline btn-sm">Logout</button></li>
       } @else {

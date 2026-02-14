@@ -23,13 +23,19 @@ export class RegisterComponent {
     role: ['user']
   });
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      const { name, email, password, role } = this.registerForm.value;
-      // Mock registration auto-login
-      this.authService.register(name, email, password).subscribe(() => {
-        this.router.navigate(['/']);
-      });
+    errorMessage = '';
+
+    onSubmit() {
+      if (this.registerForm.valid) {
+        const { name, email, password } = this.registerForm.value;
+        // Mock registration auto-login
+        this.authService.register(name, email, password).subscribe(success => {
+          if (success) {
+            this.router.navigate(['/']);
+          } else {
+            this.errorMessage = 'Email already in use';
+          }
+        });
+      }
     }
-  }
 }

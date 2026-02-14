@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Alumni } from '../interfaces/alumni.interface';
 
@@ -6,7 +6,7 @@ import { Alumni } from '../interfaces/alumni.interface';
   providedIn: 'root'
 })
 export class AlumniService {
-  private mockAlumni: Alumni[] = [
+  private alumniSignal = signal<Alumni[]>([
     {
       id: 1,
       name: 'John Doe',
@@ -117,21 +117,33 @@ export class AlumniService {
         bio: 'Olivia oversees creative direction for major brand campaigns.',
         careerCategory: 'Arts'
     }
-  ];
+  ]);
+
+  // Expose signal as read-only
+  alumni = this.alumniSignal.asReadonly();
 
   constructor() { }
 
   getAlumni(): Observable<Alumni[]> {
-    return of(this.mockAlumni);
+    return of(this.alumniSignal());
   }
 
   getAlumniById(id: number): Observable<Alumni | undefined> {
-    const alumni = this.mockAlumni.find(a => a.id === id);
+    const alumni = this.alumniSignal().find(a => a.id === id);
     return of(alumni);
   }
 
   getCareerCategories(): Observable<string[]> {
-    const categories = new Set(this.mockAlumni.map(a => a.careerCategory));
+    const categories = new Set(this.alumniSignal().map(a => a.careerCategory));
     return of(Array.from(categories));
+  }
+
+  addAlumni(alumni: Omit<Alumni, 'id'>): Observable<Alumni> {
+    const newAlumni: Alumni = {
+      ...alumni,
+      id: this.alumniSignal().length > 0 ? Math.max(...this.alumniSignal().map(a => a.id)) + 1 : 1
+    };
+    this.alumniSignal.update(list => [...list, newAlumni]);
+    return of(newAlumni);
   }
 }
