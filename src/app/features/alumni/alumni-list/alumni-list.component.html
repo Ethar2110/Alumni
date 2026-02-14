@@ -19,8 +19,8 @@
     </div>
 
     <div class="grid">
-      @for (alumni of alumniList() | search:searchText | careerFilter:selectedCategory; track alumni.id) {
-        <app-card appHighlightOnHover>
+      @for (alumni of alumniList() | search:searchText | careerFilter:selectedCategory; track alumni.id; let i = $index) {
+        <app-card appHighlightOnHover class="animate-slide-up" [style.animation-delay]="(i * 100) + 'ms'">
           <div class="alumni-card-content">
             <div class="header">
               <img [src]="alumni.profileImage" alt="{{alumni.name}}">

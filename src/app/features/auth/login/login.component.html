@@ -1,12 +1,19 @@
 <div class="auth-container">
-  <div class="auth-card">
-    <h2>Welcome Back</h2>
-    <p class="subtitle">Login to access your dashboard</p>
+  <div class="auth-card animate-scale-in">
+    <a routerLink="/" class="back-link">← Back to Home</a>
+    
+    <div class="header-section">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Login to access your dashboard</p>
+    </div>
     
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" formControlName="email" placeholder="Enter your email">
+        <div class="input-wrapper">
+          <input type="email" id="email" formControlName="email" placeholder="Enter your email">
+          <span class="focus-border"></span>
+        </div>
         @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
           <small class="error">Valid email is required</small>
         }
@@ -14,7 +21,10 @@
       
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" formControlName="password" placeholder="Enter your password">
+        <div class="input-wrapper">
+          <input type="password" id="password" formControlName="password" placeholder="Enter your password">
+          <span class="focus-border"></span>
+        </div>
         @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
           <small class="error">Password is required</small>
         }

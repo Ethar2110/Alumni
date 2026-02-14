@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="hero animate-fade-in">
   <div class="container">
     <h1>Welcome to Alumni Success Hall</h1>
     <p>Celebrating the achievements of our remarkable graduates.</p>
@@ -11,15 +11,15 @@
 
 <section class="stats">
   <div class="container">
-    <div class="stat-item">
+    <div class="stat-item animate-scale-in delay-100">
       <h3>2,500+</h3>
       <p>Alumni</p>
     </div>
-    <div class="stat-item">
+    <div class="stat-item animate-scale-in delay-200">
       <h3>50+</h3>
       <p>Countries</p>
     </div>
-    <div class="stat-item">
+    <div class="stat-item animate-scale-in delay-300">
       <h3>120+</h3>
       <p>Companies</p>
     </div>
@@ -30,8 +30,8 @@
   <div class="container">
     <h2>Featured Alumni</h2>
     <div class="alumni-grid">
-      @for (alumni of featuredAlumni(); track alumni.id) {
-        <app-card customClass="alumni-card">
+      @for (alumni of featuredAlumni(); track alumni.id; let i = $index) {
+        <app-card customClass="alumni-card animate-slide-up" [style.animation-delay]="(i * 100) + 'ms'">
           <div class="card-content">
             <img [src]="alumni.profileImage" alt="{{alumni.name}}">
             <h3>{{alumni.name}}</h3>

@@ -84,3 +84,40 @@ ul {
     transform: translateY(-5px);
   }
 }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  opacity: 0; /* Starte invisible */
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  opacity: 0;
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Stagger delays */
+@for $i from 1 through 20 {
+  .delay-#{$i * 100} {
+    animation-delay: #{$i * 100}ms;
+  }
+}
