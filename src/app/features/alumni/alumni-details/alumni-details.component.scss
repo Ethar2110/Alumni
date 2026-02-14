@@ -1,0 +1,62 @@
+.details-section {
+  padding: 3rem 0;
+  
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    &:hover { opacity: 1; color: var(--primary-color); }
+  }
+  
+  .profile-header {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    align-items: center;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .image-container img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--primary-color);
+      box-shadow: var(--shadow);
+    }
+    
+    .info {
+      h1 { margin: 0 0 0.5rem; font-size: 2.5rem; }
+      .role { font-size: 1.2rem; opacity: 0.8; margin-bottom: 1rem; }
+      .meta { margin-bottom: 1.5rem; opacity: 0.8; line-height: 1.6; }
+      
+      .socials {
+        display: flex;
+        gap: 1rem;
+        
+        @media (max-width: 768px) {
+          justify-content: center;
+        }
+      }
+    }
+  }
+  
+  .bio {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    
+    h3 { margin-top: 0; color: var(--primary-color); }
+    p { line-height: 1.8; opacity: 0.9; }
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 5rem 0;
+}

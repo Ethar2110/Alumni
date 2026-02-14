@@ -1,0 +1,25 @@
+footer {
+  background-color: var(--footer-bg);
+  color: var(--text-color);
+  padding: 2rem 0;
+  margin-top: auto;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    
+    a {
+        color: var(--primary-color);
+        &:hover { text-decoration: underline; }
+    }
+  }
+}

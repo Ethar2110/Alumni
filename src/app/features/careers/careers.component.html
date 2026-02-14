@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Explore Career Paths</h1>
+  <p class="subtitle">Where our alumni make an impact</p>
+  
+  <div class="grid">
+    @for (category of categories(); track category) {
+      <app-card customClass="career-card">
+        <div class="icon">🚀</div>
+        <h3>{{category}}</h3>
+        <p>Discover alumni working in {{category}}</p>
+        <button class="btn btn-sm btn-outline">Explore</button>
+      </app-card>
+    }
+  </div>
+</div>

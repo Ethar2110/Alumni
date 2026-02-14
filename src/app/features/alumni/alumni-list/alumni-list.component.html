@@ -1,0 +1,49 @@
+<section class="alumni-list">
+  <div class="container">
+    <h2>Meet Our Alumni</h2>
+    
+    <div class="filters">
+      <input 
+        type="text" 
+        [(ngModel)]="searchText" 
+        placeholder="Search by name, degree, or company..."
+        class="search-box"
+      >
+      
+      <select [(ngModel)]="selectedCategory" class="filter-select">
+        <option value="All">All Careers</option>
+        @for (category of categories(); track category) {
+          <option [value]="category">{{category}}</option>
+        }
+      </select>
+    </div>
+
+    <div class="grid">
+      @for (alumni of alumniList() | search:searchText | careerFilter:selectedCategory; track alumni.id) {
+        <app-card appHighlightOnHover>
+          <div class="alumni-card-content">
+            <div class="header">
+              <img [src]="alumni.profileImage" alt="{{alumni.name}}">
+              <div>
+                <h3>{{alumni.name}}</h3>
+                <span class="badge">{{alumni.graduationYear}}</span>
+              </div>
+            </div>
+            
+            <div class="details">
+              <p><strong>Degree:</strong> {{alumni.degree}}</p>
+              <p><strong>Current:</strong> {{alumni.currentPosition}}</p>
+              <p><strong>At:</strong> {{alumni.company}}</p>
+            </div>
+            
+            <a [routerLink]="['/alumni', alumni.id]" class="btn btn-sm btn-outline">View Profile</a>
+          </div>
+        </app-card>
+      } @empty {
+        <div class="no-results">
+          <p>No alumni found matching your criteria.</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

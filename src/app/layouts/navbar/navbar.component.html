@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <div class="container">
+    <a routerLink="/" class="logo">Alumni<span>Success</span></a>
+    
+    <div class="mobile-toggle" (click)="toggleMenu()">
+         <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" [class.active]="isMenuOpen">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+      <li><a routerLink="/alumni" routerLinkActive="active">Alumni</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+      
+      @if (authService.user()) {
+         @if (authService.isAdmin()) {
+           <li><a routerLink="/admin" routerLinkActive="active">Dashboard</a></li>
+         }
+         <li><button (click)="logout()" class="btn btn-outline btn-sm">Logout</button></li>
+      } @else {
+         <li><a routerLink="/auth/login" class="btn btn-sm">Login</a></li>
+      }
+       <li>
+        <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="'Toggle theme'">
+          {{ themeService.themeSignal() === 'light' ? '🌙' : '☀️' }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,36 @@
+<section class="details-section" *ngIf="alumni">
+  <div class="container">
+    <a routerLink="/alumni" class="back-link">← Back to List</a>
+    
+    <div class="profile-header">
+      <div class="image-container">
+        <img [src]="alumni.profileImage" alt="{{alumni.name}}">
+      </div>
+      <div class="info">
+        <h1>{{alumni.name}}</h1>
+        <p class="role">{{alumni.currentPosition}} &#64; {{alumni.company}}</p>
+        <div class="meta">
+          <span><strong>Class of:</strong> {{alumni.graduationYear}}</span> • 
+          <span><strong>Degree:</strong> {{alumni.degree}}</span> •
+          <span><strong>Category:</strong> {{alumni.careerCategory}}</span>
+        </div>
+        
+        <div class="socials">
+          <button class="btn btn-sm">Connect on LinkedIn</button>
+          <button class="btn btn-sm btn-outline">Send Email</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bio">
+      <h3>Biography</h3>
+      <p>{{alumni.bio}}</p>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="!alumni" class="loading">
+  <div class="container">
+    <p>Loading profile...</p>
+  </div>
+</section>

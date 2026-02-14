@@ -1,0 +1,41 @@
+.container { padding: 4rem 1rem; }
+
+.contact-wrapper {
+  display: flex;
+  gap: 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) { flex-direction: column; gap: 2rem; }
+}
+
+.info {
+  flex: 1;
+  h1 { color: var(--primary-color); margin-bottom: 1rem; }
+  p { margin-bottom: 1.5rem; line-height: 1.6; }
+  
+  .details p { margin-bottom: 1rem; }
+}
+
+.form-container {
+  flex: 1;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: var(--background-color);
+      color: var(--text-color);
+    }
+  }
+  
+  .btn { width: 100%; }
+}

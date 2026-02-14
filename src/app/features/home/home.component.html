@@ -1,0 +1,46 @@
+<section class="hero">
+  <div class="container">
+    <h1>Welcome to Alumni Success Hall</h1>
+    <p>Celebrating the achievements of our remarkable graduates.</p>
+    <div class="cta-buttons">
+      <a routerLink="/alumni" class="btn">Explore Alumni</a>
+      <a routerLink="/auth/register" class="btn btn-outline">Join Network</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stat-item">
+      <h3>2,500+</h3>
+      <p>Alumni</p>
+    </div>
+    <div class="stat-item">
+      <h3>50+</h3>
+      <p>Countries</p>
+    </div>
+    <div class="stat-item">
+      <h3>120+</h3>
+      <p>Companies</p>
+    </div>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="container">
+    <h2>Featured Alumni</h2>
+    <div class="alumni-grid">
+      @for (alumni of featuredAlumni(); track alumni.id) {
+        <app-card customClass="alumni-card">
+          <div class="card-content">
+            <img [src]="alumni.profileImage" alt="{{alumni.name}}">
+            <h3>{{alumni.name}}</h3>
+            <p class="role">{{alumni.currentPosition}}</p>
+            <p class="company">&#64; {{alumni.company}}</p>
+            <a [routerLink]="['/alumni', alumni.id]" class="view-profile">View Profile →</a>
+          </div>
+        </app-card>
+      }
+    </div>
+  </div>
+</section>

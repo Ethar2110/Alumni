@@ -1,0 +1,70 @@
+.hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+  
+  h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+  p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    
+    .btn-outline {
+      border-color: white;
+      color: white;
+      &:hover { background-color: white; color: var(--primary-color); }
+    }
+  }
+}
+
+.stats {
+  padding: 3rem 0;
+  background-color: var(--card-bg);
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+  
+  h3 { font-size: 2rem; color: var(--primary-color); margin: 0; }
+  p { margin: 0.5rem 0 0; }
+}
+
+.featured {
+  padding: 4rem 0;
+  
+  h2 { text-align: center; margin-bottom: 2rem; }
+  
+  .alumni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .card-content {
+    text-align: center;
+    
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid var(--primary-color);
+    }
+    
+    h3 { margin: 0.5rem 0; }
+    .role { color: var(--text-color); font-weight: 500; margin: 0; }
+    .company { color: var(--text-color); opacity: 0.7; margin: 0.2rem 0 1rem; }
+    
+    .view-profile {
+      color: var(--primary-color);
+      font-weight: bold;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
