@@ -36,8 +36,9 @@
               <p><strong>At:</strong> {{alumni.company}}</p>
             </div>
             
-            <a [routerLink]="['/alumni', alumni.id]" class="btn btn-sm btn-outline">View Profile</a>
-          </div>
+<a [routerLink]="['/alumni', alumni.id]" class="btn btn-outline">
+  View Profile
+</a>          </div>
         </app-card>
       } @empty {
         <div class="no-results">
